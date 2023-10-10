@@ -1,0 +1,5 @@
+# 忽略log file
+/log
+# 忽略 Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
