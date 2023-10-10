@@ -94,6 +94,8 @@ class TWFactorCollector(FactorCollector):
 
             # print("~data_dict: ", data_dict)
 
+            # 備註格式 
+            # [factor.name] [factor.factor_formula]: [singleindicator.us_indicator]
             # PB 股價淨值比(P/B): 股價淨值比-TSE
             pb = data_dict["PriceToBookRatio_TSE"]
             data_to_commit.append(self._to_factorValue_obj(company, pb, period_id, factor_obj_dict["PB"], report_time.date))
@@ -102,6 +104,74 @@ class TWFactorCollector(FactorCollector):
             ps = data_dict["PriceToRevenueRatio_TEJ"]
             data_to_commit.append(self._to_factorValue_obj(company, ps, period_id, factor_obj_dict["PS"], report_time.date))
 
+            # PE 本益比(P/E): 本益比-TEJ
+            pe = data_dict["PE_Ratio_TEJ"]
+            data_to_commit.append(self._to_factorValue_obj(company, pe, period_id, factor_obj_dict["PE"], report_time.date))
+
+            # ROA(C) 資產報酬率(稅/息/折舊前)(ROA): ROA(C)稅前息前折舊前
+            roa_c = data_dict["ROA_PreTax"]
+            data_to_commit.append(self._to_factorValue_obj(company, roa_c, period_id, factor_obj_dict["ROA(C)"], report_time.date))
+
+            # ROA(B) 資產報酬率(稅後/息前折舊前) (ROA): RROA(B)稅後息前折舊前
+            roa_b = data_dict["ROA_AfterTax"]
+            data_to_commit.append(self._to_factorValue_obj(company, roa_b, period_id, factor_obj_dict["ROA(B)"], report_time.date))
+
+             # ROA(A) 資產報酬率(稅後/息前) (ROA): ROA(A)稅後息前
+            roa_a = data_dict["ROA_AfterTax_PreInterest"]
+            data_to_commit.append(self._to_factorValue_obj(company, roa_a, period_id, factor_obj_dict["ROA(A)"], report_time.date))
+            
+            # GPM 營業毛利率: 營業毛利率
+            gpm = data_dict["GrossProfitMargin"]
+            data_to_commit.append(self._to_factorValue_obj(company, gpm, period_id, factor_obj_dict["GPM"], report_time.date))
+                       
+            # RGPMS 已實現銷貨毛利率: 已實現銷貨毛利率
+            rgpms = data_dict["RealizedGrossProfit"]
+            data_to_commit.append(self._to_factorValue_obj(company, rgpms, period_id, factor_obj_dict["RGPMS"], report_time.date))
+            
+            # OPM 營業利益率: 營業利益率
+            opm = data_dict["OperatingProfitMargin"]
+            data_to_commit.append(self._to_factorValue_obj(company, opm, period_id, factor_obj_dict["OPM"], report_time.date))
+            
+            # RIR(A) 稅後常續利益率: 常續利益率－稅後
+            rir_a = data_dict["RecurringEarningsMargin_AfterTax"]
+            data_to_commit.append(self._to_factorValue_obj(company, rir_a, period_id, factor_obj_dict["RIR(A)"], report_time.date))
+
+            # EBITDA 稅/息/折舊前淨利率: 稅前息前折舊前淨利率
+            ebitda = data_dict["PreTaxNetProfitMargin"]
+            data_to_commit.append(self._to_factorValue_obj(company, ebitda, period_id, factor_obj_dict["EBITDA"], report_time.date))
+
+            # EBTM 稅前淨利率: 稅前淨利率
+            ebtm = data_dict["PreTaxNetProfitRate"]
+            data_to_commit.append(self._to_factorValue_obj(company, ebtm, period_id, factor_obj_dict["EBTM"], report_time.date))
+            
+            # NIM 稅後淨利率: 稅後淨利率
+            nim = data_dict["AfterTaxNetProfitRate"]
+            data_to_commit.append(self._to_factorValue_obj(company, nim, period_id, factor_obj_dict["NIM"], report_time.date))
+
+            # MV 季底普通股市值: 季底普通股市值
+            mv = data_dict["EndofQuarterMarketValueofOrdinaryShares"]
+            data_to_commit.append(self._to_factorValue_obj(company, mv, period_id, factor_obj_dict["MV"], report_time.date))
+ 
+            # BETA 系統風險beta: 股價資料庫.股價報酬Beta
+            beta = data_dict["CAPM_Beta_ThreeMonths"]
+            data_to_commit.append(self._to_factorValue_obj(company, beta, period_id, factor_obj_dict["BETA"], report_time.date))                                                                                
+            
+            # RGR 營收成長率: 營收成長率
+            rgr = data_dict["RevenueGrowthRate"]
+            data_to_commit.append(self._to_factorValue_obj(company, rgr, period_id, factor_obj_dict["RGR"], report_time.date))                                                                                
+            
+            # NV_A 淨值/資產: 淨值/資產
+            nv_a = data_dict["EquityAssetRatio"]
+            data_to_commit.append(self._to_factorValue_obj(company, nv_a, period_id, factor_obj_dict["NV_A"], report_time.date))                                                                                
+            
+            # ATR 總資產周轉次數: 總資產週轉次數
+            atr = data_dict["EquityAssetRatio"]
+            data_to_commit.append(self._to_factorValue_obj(company, atr, period_id, factor_obj_dict["ATR"], report_time.date))                                                                                
+            
+            # OIE_R 業外收支/營收: 業外收支/營收
+            oie_r = data_dict["NonOperatingIncomeandExpendituretoRevenue"]
+            data_to_commit.append(self._to_factorValue_obj(company, oie_r, period_id, factor_obj_dict["OIE_R"], report_time.date))                                                                                
+                   
             # # PE: 本益比TSE
             # pe = data_dict["本益比-TSE"]
             # data_to_commit.append(self._to_factorValue_obj(company, pe, period_id, factor_obj_dict["PE"], report_time.date))
