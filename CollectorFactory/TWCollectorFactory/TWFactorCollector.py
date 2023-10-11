@@ -96,81 +96,88 @@ class TWFactorCollector(FactorCollector):
 
             # 備註格式 
             # [factor.name] [factor.factor_formula]: [singleindicator.us_indicator]
+            # datadict[XXXX] XXX必填因子的英文，中文會報錯
+
             # PB 股價淨值比(P/B): 股價淨值比-TSE
-            pb = data_dict["PriceToBookRatio_TSE"]
+            pb = data_dict.get("PriceToBookRatio_TSE", None)
             data_to_commit.append(self._to_factorValue_obj(company, pb, period_id, factor_obj_dict["PB"], report_time.date))
 
             # PS 股價營收比(P/S): 股價營收比-TEJ
-            ps = data_dict["PriceToRevenueRatio_TEJ"]
+            ps = data_dict.get("PriceToRevenueRatio_TEJ", None)
             data_to_commit.append(self._to_factorValue_obj(company, ps, period_id, factor_obj_dict["PS"], report_time.date))
 
             # PE 本益比(P/E): 本益比-TEJ
-            pe = data_dict["PE_Ratio_TEJ"]
+            pe = data_dict.get("PE_Ratio_TEJ", None)
             data_to_commit.append(self._to_factorValue_obj(company, pe, period_id, factor_obj_dict["PE"], report_time.date))
 
             # ROA(C) 資產報酬率(稅/息/折舊前)(ROA): ROA(C)稅前息前折舊前
-            roa_c = data_dict["ROA_PreTax"]
+            roa_c = data_dict.get("ROA_PreTax", None)
             data_to_commit.append(self._to_factorValue_obj(company, roa_c, period_id, factor_obj_dict["ROA(C)"], report_time.date))
 
             # ROA(B) 資產報酬率(稅後/息前折舊前) (ROA): RROA(B)稅後息前折舊前
-            roa_b = data_dict["ROA_AfterTax"]
+            roa_b = data_dict.get("ROA_AfterTax", None)
             data_to_commit.append(self._to_factorValue_obj(company, roa_b, period_id, factor_obj_dict["ROA(B)"], report_time.date))
 
-             # ROA(A) 資產報酬率(稅後/息前) (ROA): ROA(A)稅後息前
-            roa_a = data_dict["ROA_AfterTax_PreInterest"]
+            # ROA(A) 資產報酬率(稅後/息前) (ROA): ROA(A)稅後息前
+            roa_a = data_dict.get("ROA_AfterTax_PreInterest", None)
             data_to_commit.append(self._to_factorValue_obj(company, roa_a, period_id, factor_obj_dict["ROA(A)"], report_time.date))
-            
+
+            # ROE(A) 股東權益報酬率(稅後) ROE(A)－稅後
+            roe_a = data_dict.get("ROA_AfterTax_PreInterest", None)
+            data_to_commit.append(self._to_factorValue_obj(company, roe_a, period_id, factor_obj_dict["ROE(A)"], report_time.date))
+
             # GPM 營業毛利率: 營業毛利率
-            gpm = data_dict["GrossProfitMargin"]
+            gpm = data_dict.get("GrossProfitMargin", None)
             data_to_commit.append(self._to_factorValue_obj(company, gpm, period_id, factor_obj_dict["GPM"], report_time.date))
-                       
+
             # RGPMS 已實現銷貨毛利率: 已實現銷貨毛利率
-            rgpms = data_dict["RealizedGrossProfit"]
+            rgpms = data_dict.get("RealizedGrossProfit", None)
             data_to_commit.append(self._to_factorValue_obj(company, rgpms, period_id, factor_obj_dict["RGPMS"], report_time.date))
-            
+
             # OPM 營業利益率: 營業利益率
-            opm = data_dict["OperatingProfitMargin"]
+            opm = data_dict.get("OperatingProfitMargin", None)
             data_to_commit.append(self._to_factorValue_obj(company, opm, period_id, factor_obj_dict["OPM"], report_time.date))
-            
+
             # RIR(A) 稅後常續利益率: 常續利益率－稅後
-            rir_a = data_dict["RecurringEarningsMargin_AfterTax"]
+            rir_a = data_dict.get("RecurringEarningsMargin_AfterTax", None)
             data_to_commit.append(self._to_factorValue_obj(company, rir_a, period_id, factor_obj_dict["RIR(A)"], report_time.date))
 
             # EBITDA 稅/息/折舊前淨利率: 稅前息前折舊前淨利率
-            ebitda = data_dict["PreTaxNetProfitMargin"]
+            ebitda = data_dict.get("PreTaxNetProfitMargin", None)
             data_to_commit.append(self._to_factorValue_obj(company, ebitda, period_id, factor_obj_dict["EBITDA"], report_time.date))
 
             # EBTM 稅前淨利率: 稅前淨利率
-            ebtm = data_dict["PreTaxNetProfitRate"]
+            ebtm = data_dict.get("PreTaxNetProfitRate", None)
             data_to_commit.append(self._to_factorValue_obj(company, ebtm, period_id, factor_obj_dict["EBTM"], report_time.date))
-            
+
             # NIM 稅後淨利率: 稅後淨利率
-            nim = data_dict["AfterTaxNetProfitRate"]
+            nim = data_dict.get("AfterTaxNetProfitRate", None)
             data_to_commit.append(self._to_factorValue_obj(company, nim, period_id, factor_obj_dict["NIM"], report_time.date))
 
             # MV 季底普通股市值: 季底普通股市值
-            mv = data_dict["EndofQuarterMarketValueofOrdinaryShares"]
+            mv = data_dict.get("EndofQuarterMarketValueofOrdinaryShares", None)
             data_to_commit.append(self._to_factorValue_obj(company, mv, period_id, factor_obj_dict["MV"], report_time.date))
- 
+
             # BETA 系統風險beta: 股價資料庫.股價報酬Beta
-            beta = data_dict["CAPM_Beta_ThreeMonths"]
-            data_to_commit.append(self._to_factorValue_obj(company, beta, period_id, factor_obj_dict["BETA"], report_time.date))                                                                                
-            
+            beta = data_dict.get("CAPM_Beta_ThreeMonths", None)
+            data_to_commit.append(self._to_factorValue_obj(company, beta, period_id, factor_obj_dict["BETA"], report_time.date))
+
             # RGR 營收成長率: 營收成長率
-            rgr = data_dict["RevenueGrowthRate"]
-            data_to_commit.append(self._to_factorValue_obj(company, rgr, period_id, factor_obj_dict["RGR"], report_time.date))                                                                                
-            
+            rgr = data_dict.get("RevenueGrowthRate", None)
+            data_to_commit.append(self._to_factorValue_obj(company, rgr, period_id, factor_obj_dict["RGR"], report_time.date))
+
             # NV_A 淨值/資產: 淨值/資產
-            nv_a = data_dict["EquityAssetRatio"]
-            data_to_commit.append(self._to_factorValue_obj(company, nv_a, period_id, factor_obj_dict["NV_A"], report_time.date))                                                                                
-            
+            nv_a = data_dict.get("EquityAssetRatio", None)
+            data_to_commit.append(self._to_factorValue_obj(company, nv_a, period_id, factor_obj_dict["NV_A"], report_time.date))
+
             # ATR 總資產周轉次數: 總資產週轉次數
-            atr = data_dict["EquityAssetRatio"]
-            data_to_commit.append(self._to_factorValue_obj(company, atr, period_id, factor_obj_dict["ATR"], report_time.date))                                                                                
-            
+            atr = data_dict.get("TotalAssetTurnover", None)
+            data_to_commit.append(self._to_factorValue_obj(company, atr, period_id, factor_obj_dict["ATR"], report_time.date))
+
             # OIE_R 業外收支/營收: 業外收支/營收
-            oie_r = data_dict["NonOperatingIncomeandExpendituretoRevenue"]
-            data_to_commit.append(self._to_factorValue_obj(company, oie_r, period_id, factor_obj_dict["OIE_R"], report_time.date))                                                                                
+            oie_r = data_dict.get("NonOperatingIncomeandExpendituretoRevenue", None)
+            data_to_commit.append(self._to_factorValue_obj(company, oie_r, period_id, factor_obj_dict["OIE_R"], report_time.date))
+                                                                            
                    
             # # PE: 本益比TSE
             # pe = data_dict["本益比-TSE"]
@@ -351,12 +358,12 @@ class TWFactorCollector(FactorCollector):
             self.get_data(symbol)
 if __name__ == "__main__":
     tw = TWFactorCollector()
-    # taiwan50 = [2330,2454,2317,2303,2881,2308,1303,2882,1301,2002,3711,
-    #             2412,2891,2886,5871,2603,2884,1216,2885,1326,3008,2615,
-    #             3034,1101,2379,6415,2892,2357,2327,5880,2382,2880,2887,
-    #             2609,2207,2395,3045,2409,2912,5876,1590,4938,6505,1402,
-    #             2801,1102,4904,9910,8046,2408]
-    stock_list = [1101,1216]
+    stock_list = [1101,1216,1301,1303,1326,1402,1590,1605,2002,2207,
+                2303,2308,2317,2327,2330,2357,2379,2382,2395,2408,
+                2412,2454,2603,2609,2615,2801,2880,2881,2882,2883,
+                2884,2885,2886,2887,2890,2891,2892,2912,3008,3034,
+                3037,3045,3711,4904,4938,5871,5876,5880,6505,9910]
+    # stock_list = [1101,1216]
     for symbol in stock_list:
         tw._logger.warning("Start "+ str(symbol))
         tw.get_data(symbol)
