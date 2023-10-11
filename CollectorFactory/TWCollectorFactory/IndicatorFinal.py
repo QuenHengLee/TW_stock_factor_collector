@@ -52,7 +52,7 @@ periods_from_db_list = []
 for period in periods_from_db:
     periods_from_db_list.append(period)
 # 第一行是名稱，第二行(第一筆資料)好像會是空行，所以就挑過他
-for col in range(3,last_column+1):
+for col in range(2,last_column+1):
     indicator_time = str(xl_worksheet.Cells(2, col).Value.date())
     period = Period()
     if xl_worksheet.Cells(2, col).Value.date().month ==3:
