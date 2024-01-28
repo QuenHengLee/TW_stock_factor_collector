@@ -1,0 +1,35 @@
+factor_name,factor_formula
+CLOSE,收盤價(元)
+CAP,市值(百萬元)
+PE_TSE,本益比-TSE
+PE,本益比-TEJ
+PB_TSE,股價淨值比-TSE
+PB,股價淨值比-TEJ
+PS,股價營收比-TEJ
+DY,股利殖利率-TSE
+BETA_1M,CAPM_Beta 一月
+BETA_3M,CAPM_Beta 三月
+BETA_6M,CAPM_Beta 六月
+BETA_1Y,CAPM_Beta 一年
+BVPS,每股淨值(B)
+EPS,每股盈餘
+ROA_C,ROA(C)稅前息前折舊前
+ROA_B,ROA(B)稅後息前折舊前
+ROA_A,ROA(A)稅後息前
+ROA,ROA－綜合損益
+GPM,營業毛利率
+RGPMS,已實現銷貨毛利
+OPM,營業利益率
+RIR_A,常續利益率－稅後
+EBITDA,稅前息前折舊前淨利率
+EBTM,稅前淨利率
+NIM,稅後淨利率
+MV,季底普通股市值
+RGR,營收成長率
+NV_A,淨值/資產
+ATR,總資產週轉次數
+OIE_R,業外收支/營收
+ROE_A,ROE(A)－稅後
+ROE_B,ROE(B)－常續利益
+ROE,ROE－綜合損益
+RD,研究發展費

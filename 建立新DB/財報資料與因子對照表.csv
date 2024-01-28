@@ -1,0 +1,36 @@
+﻿,factor_name,factor_name_abbr,factor_formula
+收盤價(元),Close,CLOSE,CLOSE
+市值(百萬元),Market_Cap_Million,CAP,CAP
+本益比-TSE,PE_Ratio_TSE,PE_TSE,PE_TSE
+本益比-TEJ,PE_Ratio_TEJ,PE,PE
+股價淨值比-TSE,PB_Ratio_TSE,PB_TSE,PB_TSE
+股價淨值比-TEJ,PB_Ratio_TEJ,PB,PB
+股價營收比-TEJ,PS_Ratio_TEJ,PS,PS
+股利殖利率-TSE,Dividend_Yield,DY,DY
+CAPM_Beta 一月,CAPM_Beta_1_Months,BETA_1M,BETA_1M
+CAPM_Beta 三月,CAPM_Beta_3_Months,BETA_3M,BETA_3M
+CAPM_Beta 六月,CAPM_Beta_6_Months,BETA_6M,BETA_6M
+CAPM_Beta 一年,CAPM_Beta_1_Year,BETA_1Y,BETA_1Y
+每股淨值(B),Book_Value_Per_Share,BVPS,BVPS
+每股盈餘,Earnings_Per_Share,EPS,EPS
+ROA(C)稅前息前折舊前,ROA_PreTax,ROA_C,ROA_C
+ROA(B)稅後息前折舊前,ROA_AfterTax,ROA_B,ROA_B
+ROA(A)稅後息前,ROA_AfterTax_Pre_Interest,ROA_A,ROA_A
+ROA－綜合損益,ROA_Comprehensive_Income,ROA,ROA
+營業毛利率,Gross_Profit_Margin,GPM,GPM
+已實現銷貨毛利,Realized_Gross_Profit,RGPMS,RGPMS
+營業利益率,Operating_Profit_Margin,OPM,OPM
+常續利益率－稅後,Recurring_Earnings_Margin_After_Tax,RIR_A,RIR_A
+稅前息前折舊前淨利率,Pre_Tax_Net_Profit_Margin,EBITDA,EBITDA
+稅前淨利率,Pre_Tax_Net_Profit_Rate,EBTM,EBTM
+稅後淨利率,After_Tax_Net_Profit_Rate,NIM,NIM
+季底普通股市值,End_of_Quarter_Market_Value_of_Ordinary_Shares,MV,MV
+營收成長率,Revenue_Growth_Rate,RGR,RGR
+淨值/資產,Equity_Asset_Ratio,NV_A,NV_A
+總資產週轉次數,Total_Asset_Turnover,ATR,ATR
+業外收支/營收,Non_Operating_Incomeand_Expenditure_to_Revenue,OIE_R,OIE_R
+ROE(A)－稅後,ROE_AfterTax_Pre_Interest,ROE_A,ROE_A
+ROE(B)－常續利益,ROE_Sustainable_Income,ROE_B,ROE_B
+ROE－綜合損益,ROE_Comprehensive_Income,ROE,ROE
+研究發展費,Research_Development_Expenses,RD,RD
+,,,

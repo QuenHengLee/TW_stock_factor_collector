@@ -93,20 +93,23 @@ class TWIndicatorCollector(IndicatorCollector):
     def get_all_data(self):
         symbols = self.get_company()
         for symbol in symbols:
-            isDone = False
-            while not isDone:
-                try:
-                    list = win32pdh.EnumObjects(None, None , win32pdh.PERF_DETAIL_WIZARD , 1 )
-                    junk, process_list = win32pdh.EnumObjectItems(
-                    None, None, "process", win32pdh.PERF_DETAIL_WIZARD)
-                except:
-                    self._logger.error("[CollectorFactory][TWCollectorFactory][TWStockCollector]::error getting all process")
-                if "TejRefresh" in process_list:
-                    time.sleep(10)
-                else:
-                    isDone = True
-            self._logger.info("start "+ str(symbol))
-            self.get_data(symbol)
+            # 2014/01/27 EDIT BY QUEN
+            # 暫時加上去判斷式，之後要移除
+            if int(symbol) > 3581:
+                isDone = False
+                while not isDone:
+                    try:
+                        list = win32pdh.EnumObjects(None, None , win32pdh.PERF_DETAIL_WIZARD , 1 )
+                        junk, process_list = win32pdh.EnumObjectItems(
+                        None, None, "process", win32pdh.PERF_DETAIL_WIZARD)
+                    except:
+                        self._logger.error("[CollectorFactory][TWCollectorFactory][TWStockCollector]::error getting all process")
+                    if "TejRefresh" in process_list:
+                        time.sleep(10)
+                    else:
+                        isDone = True
+                self._logger.info("start "+ str(symbol))
+                self.get_data(symbol)
 
 
 
@@ -115,34 +118,34 @@ if __name__ == "__main__":
     
     tw = TWIndicatorCollector()
  
-    # tw.get_all_data()
+    tw.get_all_data()
     # 下面是執行特定公司的股價方法
     # taiwan50 = [1101,1216,1301,1303,1326,1402,1590,1605,2002,2207,
     #             2303,2308,2317,2327,2330,2357,2379,2382,2395,2408,
     #             2412,2454,2603,2609,2615,2801,2880,2881,2882,2883,
     #             2884,2885,2886,2887,2890,2891,2892,2912,3008,3034,
     #             3037,3045,3711,4904,4938,5871,5876,5880,6505,9910]
-    taiwan50 = [1101,1216]
-    companys = tw.get_company()
-    notYet5533 = True
-    for symbol in taiwan50:
-    # for symbol in companys:
-    #     if int(symbol) > 5533:
-    #         notYet5533 = False
-    #     if notYet5533:
-    #         continue
-        isDone = False
-        while not isDone:
-            try:
-                list = win32pdh.EnumObjects(None, None , win32pdh.PERF_DETAIL_WIZARD , 1 )
-                junk, process_list = win32pdh.EnumObjectItems(
-                None, None, "process", win32pdh.PERF_DETAIL_WIZARD)
-            except:
-                tw._logger.error("[CollectorFactory][TWCollectorFactory][TWStockCollector]::error getting all process")
-            if "TejRefresh" in process_list:
-                time.sleep(10)
-            else:
-                isDone = True
-        tw._logger.info("start "+ str(symbol))
-        tw.get_data(symbol)
+    # # taiwan50 = [1101,1216]
+    # companys = tw.get_company()
+    # notYet5533 = True
+    # for symbol in taiwan50:
+    # # for symbol in companys:
+    # #     if int(symbol) > 5533:
+    # #         notYet5533 = False
+    # #     if notYet5533:
+    # #         continue
+    #     isDone = False
+    #     while not isDone:
+    #         try:
+    #             list = win32pdh.EnumObjects(None, None , win32pdh.PERF_DETAIL_WIZARD , 1 )
+    #             junk, process_list = win32pdh.EnumObjectItems(
+    #             None, None, "process", win32pdh.PERF_DETAIL_WIZARD)
+    #         except:
+    #             tw._logger.error("[CollectorFactory][TWCollectorFactory][TWStockCollector]::error getting all process")
+    #         if "TejRefresh" in process_list:
+    #             time.sleep(10)
+    #         else:
+    #             isDone = True
+    #     tw._logger.info("start "+ str(symbol))
+    #     tw.get_data(symbol)
         
